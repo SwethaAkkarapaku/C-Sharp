@@ -1,0 +1,278 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyFirstProj
+{
+    internal class Program
+    {
+        static void Main(string[] args)//int Main(string[] args), int Main(), void Main(), async Task Main()
+        {
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = i; j < n; j++)
+                {
+                    Console.Write("  ");//Trick-2
+                }
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(j+" ");//Trick-2
+                }
+                Console.WriteLine();
+            }
+            return;
+
+            //int n = int.Parse(Console.ReadLine());
+            //for (int i = 1; i <= n; i++)
+            //{
+            //    for (int j = i; j <= n; j++)
+            //    {
+            //        Console.Write(" ");//Trick-2
+            //    }
+            //    for (int j = 1; j <= i; j++)
+            //    {
+            //        Console.Write(j + " ");//Trick-2
+            //    }
+            //    Console.WriteLine();
+            //}
+            //return;
+
+            //int n = int.Parse(Console.ReadLine());
+            //for (int i = 1; i <=n; i++)
+            //{
+            //    for (int j = i; j <= n; j++)
+            //    {
+            //        Console.Write(j + " ");//Trick-2
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //int n = int.Parse(Console.ReadLine());
+            //for (int i = n; i>=0; i--)
+            //{
+            //    for (int j = 0; j <= i; j++)
+            //    {
+            //        Console.Write(j + " ");//Trick-2
+            //    }
+            //    Console.WriteLine();
+            //}
+            //return;
+
+            //int n = int.Parse(Console.ReadLine());
+            //for (int i=0;i<n;i++)
+            //{
+            //    for(int j=0;j <= i;j++)
+            //    {
+            //        Console.Write(j+" ");//Trick-1
+            //    }
+            //    Console.WriteLine();
+            //}
+            //return;
+
+            //for(; ; )
+            //{
+            //    Console.WriteLine("infinity");
+            //}
+
+
+            //while (true)//infinite loop(check and execute)
+            //{
+            //    int option = int.Parse(Console.ReadLine());
+            //    if (option == 1)
+            //    {
+            //        Console.WriteLine("entered one");
+            //    }
+            //    else if (option == 2)
+            //    {
+            //        Console.WriteLine("entered two");
+            //        continue;
+            //    }
+            //    else if (option == 0)
+            //    {
+            //        break;
+            //    }
+            //}
+            //Console.WriteLine("entered one");
+
+            //#region IF_ELSE
+            //int mark = 45;
+            //if(mark < 59 && mark > 35)//returns a boolean value
+            //{
+
+            //}
+            //else if(mark >= 60 && mark < 60)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+            //#ending IF_ELSE
+
+
+            //checked//for checking the overflow of the 
+            //{
+            //    int val1 = int.MaxValue;
+            //    ++val1;
+            //    Console.WriteLine(val1);
+            //}
+
+            //string str = null ;
+            //string str2=str??"swetha";
+            //Console.WriteLine(str2);
+
+            //string str3 = str != null ? str : "good girl";
+
+            //Console.WriteLine(str3);
+
+
+            //precedence operators
+            //int a=10; int b=5;
+            //double c = 10.4;
+            //double res1 = a + b * c / 2;
+            ////Console.WriteLine(res1);
+            //double res2=(a + b) * c / 2;
+            ////Console.WriteLine(res2);
+            //double res3 = a + b + c / 2;
+            //Console.WriteLine($"{res1}-{res2}-{res3}");
+
+            //Console.WriteLine(true && a * b - b * a == 0);
+            //Console.WriteLine(true && a * b <0 && b * a == b * a);//false
+
+            //int val1 = 10;
+            //double res = val1 / 3d;// int/int =int (eg:val1 / 3), int/double =double (eg:val1 / 3d)
+            //Console.WriteLine(res);
+
+
+            //string str2 = null;
+            ////int val1 = null;
+            ////map the db column of type id: bigint to local variable:Nullable field
+            //long val2 = 12345;//long is a value type can assign null
+            ////Nullable
+            //Nullable<long> nullableSal = 123456;//(or) long? nullableSal = 123456;
+            //nullableSal =23;
+            ////cal the bonus by 10%. If the sal is NULL, bonus is 2000
+            //if (nullableSal.HasValue)
+            //{
+            //    Console.WriteLine("value:"+ nullableSal.Value*0.1);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("bonus is 2000");
+            //}
+
+
+            //int Sal = 1003;
+            //Console.WriteLine("{0:N}",Sal);//by using Thread.CurrentThread.CurrentCulture we can manually define the charcters
+            ////C is format character,E is exponential,D is decimal,X is hexadecimal,N is natural
+            //string strTemp = String.Format("{0:C}", Sal);
+            //Console.WriteLine(strTemp);
+            //Console.WriteLine(strTemp.GetType());
+            //Console.WriteLine(Sal.GetType());
+
+
+            //char ch = 'A';
+            //int a=(int)ch;//Ascii value
+            //Console.WriteLine(ch);
+            //Console.WriteLine(a);
+
+            //var Value1 = 10;//implicit typed local variable
+            //Console.WriteLine(Value1.GetType());
+            ////var Value1 = "text";//error
+            //var Value2 = "test";
+            //Console.WriteLine(Value2.GetType());
+            //string name = "mary";
+
+            //Console.WriteLine(name);
+            //name = null;//assign null to string
+
+            //int val3 = 10;
+            ////val3 = null;//value type category error
+
+            //some comments says: "it is my comment"
+            //string comment1 = "some comment says:\" is my comment \"";//escape character
+            //string comment2 = @"path is : c:\mypath\filename";//escape character
+            //for comment2 or "path is : c:\\mypath\\filename";
+            //Console.WriteLine(comment1);
+            //Console.WriteLine(comment2);
+
+            //int i = (int)100ul;
+            //ulong ul = 100;
+            //float f = 12.34f;
+            //double d = (double)12.34m;
+            //byte b = 255;
+            //int val = 123;
+            //long lval = val;
+            //val = (int)lval;//explicit conversion
+
+            //char ch = 'a';
+            //int val2 = ch;//imp
+            //char c2 = val2;//explicit
+            //int val3;//local variables
+            //++val3;
+            //Console.WriteLine(val2.GetType());//Method on System.Object type
+            ////Console.WriteLine(typeof(100));
+            //Type t= typeof(int);//Operator
+            //if(val2.GetType() == typeof(int))
+            //{
+            //    Console.WriteLine("val2 is integer");
+            //}
+
+
+
+
+            //Console.WriteLine("enter principle: ");
+            //double pAmount=double.Parse(Console.ReadLine());
+
+            //Console.WriteLine("enter rate of interest: ");
+            //double RI=double.Parse(Console.ReadLine());
+
+            //Console.WriteLine("enter years: ");
+            //int years=int.Parse(Console.ReadLine());
+
+            //double Balance = pAmount + (pAmount * years * RI / 100.0);
+            //Console.WriteLine("Balance is: "+Balance);
+
+            //int val = 10;
+            //object obj = val;//Boxing - value type assigned to object
+            //int val2 = (int)obj;//UnBoxing - Assign object to value type. Requires explicit casting
+            //Console.WriteLine(val2);
+            //results in performance impact so try to avoid boxing and unboxing operations
+
+
+            //Console.Write("Hello World!");
+            //Console.WriteLine("Welcome to .net framework");
+
+            //string firstname=Console.ReadLine();
+            //Console.WriteLine("your name: " + firstname);
+
+            //string lastname = Console.ReadLine();
+            //Console.WriteLine("your name: " + lastname);
+
+            //Console.WriteLine("full name: "+firstname +" "+ lastname);
+            //string age = Console.ReadLine();
+            //int nage;
+            ////int nage = int.Parse(age);
+            //bool valid=int.TryParse(age, out nage);
+            //if(valid==false)
+            //{
+            //    Console.WriteLine("error in age: "+age);
+            //    Console.WriteLine("error in age");
+            //    return;
+            //}
+            //++nage;
+            //Console.WriteLine("your age by next year: " + nage);
+
+            //string salary = Console.ReadLine();
+            //double nsalary = double.Parse(salary);
+            //Console.WriteLine($"your salary: {nsalary}" );
+
+            Datatype obj = new Datatype(); //to access the class we have to create the instance of that class 
+            obj.show();
+        }
+    }
+}
