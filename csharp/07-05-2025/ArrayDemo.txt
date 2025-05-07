@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArrayDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("sum of two digits: "+GetBase10FromBinary("1001","101"));
+            Console.WriteLine(get("1001"));
+
+            //int[] prices=new int[5];
+            //Console.WriteLine(prices.Length);
+            //Console.WriteLine(prices.Rank);
+            //Console.WriteLine(prices[0]);
+            ////Console.WriteLine(arr[5]); //EXCEPTION: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+            //prices[0]=1;
+            //prices[1]=2;
+            //prices[2]=3;
+            //prices[3]=4;
+            //prices[4]=5;
+            //Console.WriteLine("Array Items...");
+            //for (int i = 0; i < prices.Length; i++)
+            //{
+            //    Console.Write(prices[i]+" ");
+            //}
+            //Console.WriteLine("\nFor each: ");
+            //foreach (int values in prices)
+            //{
+            //    Console.Write(values + " ");
+            //    //values++;//not allowed because for each only applicable for readonly values
+            //}
+            //Console.WriteLine("\nData type of the price array is : "+prices.GetType());
+
+            ////using array class
+            //Array obj = Array.CreateInstance(typeof(int),4);
+            //obj.SetValue(10, 0);
+            //obj.SetValue(20, 1);
+            //obj.SetValue(30, 2);
+            //obj.SetValue(40, 3);
+            //Console.WriteLine("By using Array object:");
+            //for (int i = 0; i < obj.GetLength(0); i++)
+            //{
+            //    Console.Write(obj.GetValue(i) + " ");
+            //}
+            ////Array.Sort(obj);//for sorting the array
+            ////int[] NewArray = {9,8,7,6};//doubt
+            //int[] NewArray = new int[10];
+            //obj.CopyTo(NewArray,4);
+            //Console.WriteLine("\ncopying the obj to new array");
+            //for (int i = 0; i < NewArray.GetLength(0); i++)
+            //{
+            //    Console.Write(NewArray.GetValue(i) + " ");
+            //}
+
+            //double[,] storePrices = new double[3,4];//multi dimensional array
+            //storePrices[0, 2] = 23.45;
+            //Array obj2 = storePrices;
+            //double val = Convert.ToDouble(obj2.GetValue(0, 2));
+            //Console.WriteLine(val);
+
+            //Rectangle array
+            //int NumCatg = 3;
+            //int NumItems = 4;
+            //double[,] storeprices = new double[NumCatg, NumItems];
+
+            //Jagged array: Array of arrays
+            //Console.WriteLine("enter number of categories: ");
+            //int Catgcount=int.Parse(Console.ReadLine());
+            //double[][] storeprices = new double[Catgcount][];
+            //for (int i = 0; i < Catgcount; i++)
+            //{
+            //    Console.WriteLine("enter number of items: ");
+            //    int itemc = int.Parse(Console.ReadLine());
+            //    storeprices[i] = new double[itemc];
+            //    for(int j = 0; j < itemc; j++)
+            //    {
+            //        Console.WriteLine("enter the price: ");
+            //        storeprices[i][j] = double.Parse(Console.ReadLine());
+            //    }
+
+            //}
+            //for(int i = 0;i < Catgcount; i++)
+            //{
+            //    double itemsum = 0;
+            //    Console.WriteLine("items in category"+(i+1));
+            //    int itemcount=storeprices[i].Length;
+            //    for(int j = 0;j < itemcount; j++)
+            //    {
+            //        itemsum += storeprices[i][j];
+            //    }
+            //    Console.WriteLine($"average:{itemsum / itemcount}");
+            //}
+
+            //Console.WriteLine("Armstrong numbers between 1 and 1000 are:");
+            //for (int i = 1; i <= 1000; i++)
+            //{
+            //    int sum = 0;
+            //    int temp = i;
+            //    int digits = i.ToString().Length;
+
+            //    while (temp > 0)
+            //    {
+            //        int digit = temp % 10;
+            //        sum += (int)Math.Pow(digit, digits);
+            //        temp /= 10;
+            //    }
+
+            //    if (sum == i)
+            //    {
+            //        Console.WriteLine(i);
+            //    }
+            //}
+
+            //Console.WriteLine("enter number of categories: ");
+            //string firstNum=Console.ReadLine();
+            //string secondNum=Console.ReadLine();
+            //int sum = 0;
+            //for (int i=0;i<firstNum.Length;i++)
+            //{
+            //    if (firstNum[i]==1)
+            //    {
+            //        numbers[i] = (int)char.GetNumericValue(firstNum[i]);
+            //        sum =sum+Math.Pow(2,i)*;
+            //    }
+            //}
+        }
+        private static int GetBase10FromBinary(string a,string b)
+        {
+            int a1=Convert.ToInt32(a,2);
+            int b1=Convert.ToInt32(b,2);
+            int sum= a1 + b1;
+            return sum;
+        }
+        static int get(string inp)
+        {
+            char[] chars = inp.ToCharArray();
+            char[] ReverseChars = chars.Reverse().ToArray();
+            int Sum = 0;
+            for (int i = 0; i < ReverseChars.Length; i++)
+            {
+                int digit = int.Parse(ReverseChars[i] + "");
+                Sum = Sum + (int)Math.Pow(2, i) * digit;
+            }
+            return Sum;
+        }
+    }
+}
