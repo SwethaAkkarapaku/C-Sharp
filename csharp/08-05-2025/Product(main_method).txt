@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProductOrder
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Product count in order:");
+            int nProdCount=int.Parse(Console.ReadLine());
+            int ncurrprodnum = 0;
+            Order order = new Order("001",DateTime.Now.ToLongDateString(),"Address here", nProdCount);
+            if(nProdCount>0)
+            {
+                bool Success = false;
+                do
+                {
+                    Console.WriteLine($"Product number:{ncurrprodnum}");
+                    Console.WriteLine("enter the prod name:");
+                    string prodname = Console.ReadLine();
+                    Console.WriteLine("enter the prod category:");
+                    string prodcategory = Console.ReadLine();
+                    Console.WriteLine("enter the prod price:");
+                    double prodprice = double.Parse(Console.ReadLine());
+                    Console.WriteLine("enter the order Quantity:");
+                    int orderqty = int.Parse(Console.ReadLine());
+
+                    Product p1 = new Product(prodname, prodcategory, prodprice, orderqty);
+                    Success=order.AddProduct(p1);
+                    ++ncurrprodnum;
+                } while(ncurrprodnum < nProdCount);
+            }
+            order.showOrderProducts();
+
+
+
+            //Console.WriteLine("enter the prod name:");
+            //string prod_name =Console.ReadLine();
+            //Console.WriteLine("enter the prod category:");
+            //string prod_category = Console.ReadLine();
+            //Console.WriteLine("enter the prod price:");
+            //double prod_price = double.Parse(Console.ReadLine());
+            //Console.WriteLine("enter the order Quantity:");
+            //int order_qty = int.Parse(Console.ReadLine());
+            
+            //Product p1 =new Product(prod_name, prod_category, prod_price);
+            //p1.ProdName= prod_name;
+            //p1.ProdPrice = prod_price;
+            //p1.ProdCategory= prod_category;
+            //p1.qty = order_qty;
+
+            //p1.DisplayInfo();
+            //double order_discount=p1.CalculateDiscount();
+            //Console.WriteLine($"without membership:{order_discount}");
+
+            //double order_discount1 = p1.CalculateDiscount("GOLD");
+            //Console.WriteLine($"with gold membership:{order_discount1}");
+            //p1 = null;
+            //Console.WriteLine("inside the main method: "+p1.ProdCategory);
+
+            //Product p2 = new Product();
+            //p2.ProdName = prod_name;
+            //p2.ProdPrice = prod_price;
+            //p2.DisplayInfo();
+
+
+
+            //int prod_count=int.Parse(Console.ReadLine());
+            //while(prod_count>0)
+            //{
+            //    dynamic[] prod_details = new dynamic[4];
+
+            //    for(int i = 0; i < prod_details.Length; i++)
+            //    {
+            //        Console.Write(prod_details[i]+" ");
+            //    }
+            //    prod_count++;
+            //    if (prod_count == 0)
+            //    {
+            //        break;
+            //    }
+            //} To be check this code
+
+
+            //Console.WriteLine("enter the prod name:");
+            //string prod_name=(Console.ReadLine());
+            //Console.WriteLine("enter the prod category:");
+            //string prod_category = (Console.ReadLine());
+            //Console.WriteLine("enter the prod price:");
+            //double prod_price = double.Parse(Console.ReadLine());
+            //Console.WriteLine("enter the order Quantity:");
+            //int order_qty = int.Parse(Console.ReadLine());
+            //double discount = 0;
+            //if (prod_price >= 1000 && prod_price <= 1500)
+            //{
+            //    if (order_qty == 2)
+            //    {
+            //        discount = prod_price * order_qty * 5 / 100.0;
+            //    }
+            //    else if (order_qty > 2)
+            //    {
+            //        discount = prod_price * order_qty * 10 / 100.0;
+            //    }
+            //}
+            //else if (prod_price >= 1501 && prod_price < 2000)
+            //{
+            //    if (order_qty == 2)
+            //    {
+            //        discount = prod_price * order_qty * 7.5 / 100.0;
+            //    }
+            //    else if (order_qty > 2)
+            //    {
+            //        discount = prod_price * order_qty * 15 / 100.0;
+            //    }
+            //}
+            //else if (prod_price <= 2000)
+            //{
+            //    discount = prod_price * order_qty * 20 / 100.0;
+            //}
+            //Console.WriteLine("discount:" + discount);
+        }
+    }
+}

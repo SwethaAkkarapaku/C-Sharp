@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProductOrder
+{
+    internal class Order
+    {
+        public string OrderNumber {  get; set; }
+        public string OrderDate { get; set; }
+        public string ShippingAddress { get; set; }
+        public Product[] products { get; set; }//contains relation
+        private int arrIndex=0;
+        public Order(string ONumber, string ODate, string ShipAddress,int noofprods)
+        {
+            OrderNumber=ONumber;
+            OrderDate=ODate;
+            ShippingAddress=ShipAddress;
+            products=new Product[noofprods];
+        }
+        public void showOrderDetails()
+        {
+            Console.WriteLine($"{OrderNumber}-{OrderDate}-{ShippingAddress}");
+        }
+        public bool AddProduct(Product p)
+        {
+            if (arrIndex >= products.Length)
+            {
+                Console.WriteLine("max number reached");
+                return false;
+            }
+            else
+            {
+                products[arrIndex] = p;
+                arrIndex++;
+                return true;
+            }
+        }
+
+        public void showOrderProducts()
+        {
+            foreach(Product p in products)
+            {
+                p.DisplayInfo();//Delegation
+                double discount=p.CalculateDiscount();
+                Console.WriteLine($"Product Discount in Order entity: {discount}");
+            }
+            Console.WriteLine($"{OrderNumber}-{OrderDate}-{ShippingAddress}");
+        }
+    }
+}

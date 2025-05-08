@@ -1,0 +1,107 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProductOrder
+{
+    public class Product
+    {
+        string name;
+        string category;
+        double price;
+        double discount;
+        int qty;
+
+        //auto implemented property
+        //public int qty
+        //{
+        //    get; set;
+        //}
+
+        //properties
+        public string ProdName
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public double ProdPrice
+        {
+            get { return price; }
+            set { price = value; }
+        }
+        public string ProdCategory
+        {
+            set { category = value; }
+            get { return category; }
+        }
+        //constructor
+        public Product(string nm, string categ, double pri, int q)
+        {
+            name = nm;
+            category = categ;
+            price = pri;
+            qty = q;
+        }
+
+        //constructor chain
+        public Product(string nm, string categ, double pri) :this(nm, categ, pri, 10)
+        {
+        }
+
+        //public method
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"{name}-{price}-{qty}-{category}");
+        }
+        public double CalculateDiscount(string MembershipType)
+        {
+            double discount = CalculateDiscount();
+            if (MembershipType=="SILVER")
+            {
+                discount = discount * 1.1;
+            }
+            else if (MembershipType == "GOLD")
+            {
+                discount = discount * 1.2;
+            }
+            return discount;
+        }
+        public double CalculateDiscount()
+        {
+            double discount = 0;
+            if (ProdPrice >= 1000 && ProdPrice <= 1500)
+            {
+                if (ProdPrice == 2)
+                {
+                    discount = ProdPrice * qty * 5 / 100.0;
+                }
+                else if (qty > 2)
+                {
+                    discount = ProdPrice * qty * 10 / 100.0;
+                }
+            }
+            else if (ProdPrice >= 1501 && ProdPrice < 2000)
+            {
+                if (qty == 2)
+                {
+                    discount = ProdPrice * qty * 7.5 / 100.0;
+                }
+                else if (qty > 2)
+                {
+                    discount = ProdPrice * qty * 15 / 100.0;
+                }
+            }
+            else if (ProdPrice >= 2000)
+            {
+                discount = ProdPrice * qty * 20 / 100.0;
+            }
+            return discount;
+        }
+        ~Product()
+        {
+            Console.WriteLine("From Destructor...");
+        }
+    }
+}
