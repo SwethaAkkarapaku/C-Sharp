@@ -1,0 +1,7 @@
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\bin\Debug\DataManager.exe.config
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\bin\Debug\DataManager.exe
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\bin\Debug\DataManager.pdb
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\obj\Debug\GenericsDemo.csproj.AssemblyReference.cache
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\obj\Debug\GenericsDemo.csproj.CoreCompileInputs.cache
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\obj\Debug\DataManager.exe
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\GenericsDemo\GenericsDemo\obj\Debug\DataManager.pdb

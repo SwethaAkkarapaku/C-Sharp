@@ -1,0 +1,7 @@
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\bin\Debug\ManageStudents.exe.config
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\bin\Debug\ManageStudents.exe
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\bin\Debug\ManageStudents.pdb
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\obj\Debug\ManageStudents.csproj.AssemblyReference.cache
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\obj\Debug\ManageStudents.csproj.CoreCompileInputs.cache
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\obj\Debug\ManageStudents.exe
+C:\Users\akkarapaku.swetha\.net(05-05-2025)\ManageStudents\ManageStudents\obj\Debug\ManageStudents.pdb
