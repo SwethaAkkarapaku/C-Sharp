@@ -1,0 +1,58 @@
+Transaction isolation levels in databases control how transactions interact with each other, ensuring data consistency and integrity. Here are the four main isolation levels and how they handle multiple transactions:
+
+1. Read Uncommitted:
+Description: Transactions can read uncommitted changes made by other transactions, leading to dirty reads.
+Use Case: Suitable for scenarios where performance is prioritized over accuracy.
+
+Example:
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+BEGIN TRANSACTION;
+-- Example SQL statements
+SELECT * FROM Users;
+UPDATE Users SET age = age + 1 WHERE id = 1;
+COMMIT TRANSACTION;
+
+2. Read Committed:
+Description: Transactions can only read data that has been committed, preventing dirty reads but allowing non-repeatable reads.
+Use Case: Commonly used to prevent dirty reads while maintaining reasonable performance.
+
+Example:
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+BEGIN TRANSACTION;
+-- Example SQL statements
+SELECT * FROM Orders WHERE status = 'Pending';
+UPDATE Orders SET status = 'Completed' WHERE id = 100;
+COMMIT TRANSACTION;
+
+3. Repeatable Read:
+Description: Ensures that if a transaction reads a row, other transactions cannot modify or delete that row until the first transaction completes, preventing non-repeatable reads but allowing phantom reads.
+Use Case: Useful for applications requiring consistent reads during a transaction.
+
+Example:
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION;
+
+-- Initial SELECT statement to read data
+SELECT * FROM Products WHERE price > 100;
+
+-- UPDATE statement to modify data
+UPDATE Products SET price = price * 1.1 WHERE category = 'Electronics';
+
+-- SELECT statement to check if the data has been committed
+SELECT * FROM Products WHERE price > 100;
+
+COMMIT TRANSACTION;
+
+4. Serializable:
+Description: The highest level of isolation, simulating transactions being executed serially, thus preventing dirty reads, non-repeatable reads, and phantom reads.
+Use Case: Critical for applications requiring complete isolation and data integrity, though it can impact performance due to intense locking.
+
+Example:
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+-- Example SQL statements
+SELECT * FROM Customers WHERE region = 'North';
+INSERT INTO Customers (name, region) VALUES ('Jane Doe', 'North');
+COMMIT TRANSACTION;
+
+Each isolation level provides a different balance between data consistency and system performance
