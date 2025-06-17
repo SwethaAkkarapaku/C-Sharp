@@ -1,0 +1,49 @@
+Complete Isolation and Range Locks
+Complete Isolation
+Definition: Complete isolation ensures that transactions are executed in a manner that they appear to be completely isolated from each other. This means that the results of a transaction are not visible to other transactions until the transaction is complete.
+
+Example Scenario: Imagine you have a table of bank accounts:
+CREATE TABLE BankAccount (
+    AccountID INT PRIMARY KEY,
+    Balance DECIMAL(10, 2)
+);
+
+
+If you start a transaction to transfer money between accounts:
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+
+UPDATE BankAccount SET Balance = Balance - 100 WHERE AccountID = 1;
+UPDATE BankAccount SET Balance = Balance + 100 WHERE AccountID = 2;
+
+COMMIT TRANSACTION;
+
+
+During this transaction, no other transactions can read or modify the balances of these accounts. This ensures that the transfer is accurate and consistent, as if the transactions were executed one after the other.
+
+Range Locks
+Definition: Range locks are a specific type of lock used to prevent phantom reads by locking a range of index keys. This ensures that no new rows can be inserted into the range by other transactions until the current transaction is complete.
+
+Example Scenario: Imagine you have a table of bank accounts and you want to read a range of accounts:
+CREATE TABLE BankAccount (
+    AccountID INT PRIMARY KEY,
+    Balance DECIMAL(10, 2)
+);
+
+
+If you start a transaction to read a range of accounts:
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+
+SELECT * FROM BankAccount WHERE AccountID BETWEEN 1 AND 10;
+
+-- Range lock is placed on AccountID 1 to 10
+
+COMMIT TRANSACTION;
+
+
+During this transaction, no other transactions can insert, update, or delete rows with AccountID between 1 and 10. This ensures that the result set remains consistent and no new rows (phantoms) can appear in the range.
+
+Key Differences
+Complete Isolation: Applies to the entire transaction, ensuring no other transactions can interfere with it.
+Range Locks: Specifically locks a range of data, preventing modifications within that range.
