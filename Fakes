@@ -1,0 +1,111 @@
+In unit testing, static fakes and dynamic fakes are used to simulate dependencies and control the behavior of the code under test. Here's how they differ:
+
+Static Fake
+Definition: A static fake is a simplified implementation of a dependency that returns predefined data. It does not change its behavior during the test execution.
+Example: Suppose you have a service that fetches user data from a database. A static fake might return a fixed set of user data regardless of the input.
+
+Example Code:
+
+1) User Class :->
+
+  public class User {
+      private int id;
+      private String name;
+      public User(int id, String name) {
+          this.id = id;
+          this.name = name;
+      }
+      public int getId() {
+          return id;
+      }
+      public String getName() {
+          return name;
+      }
+      @Override
+      public String toString() {
+          return "User{id=" + id + ", name='" + name + "'}";
+      }
+  }
+
+2) UserService Interface :->
+  public interface UserService {
+      User getUserById(int id);
+  }
+
+3) StaticUserServiceFake Class :->
+  class StaticUserServiceFake implements UserService {
+      @Override
+      public User getUserById(int id) {
+          return new User(id, "Static User");
+      }
+  }
+Usage: This fake will always return the same user data for any given ID.
+
+4) Example Usage :->
+Yes, the StaticUserServiceFake class will always return a user with the name "Static User" regardless of the ID passed. 
+This is because the implementation of the getUserById method in StaticUserServiceFake does not vary based on the input ID.
+It simply creates a new User object with the given ID and the name "Static User".
+
+  public class Main {
+      public static void main(String[] args) {
+          UserService userService = new StaticUserServiceFake();
+          
+          User user1 = userService.getUserById(1);
+          System.out.println(user1); // Output: User{id=1, name='Static User'}
+          
+          User user2 = userService. getUserById(2);
+          System.out.println(user2); // Output: User{id=2, name='Static User'}
+          
+          User user3 = userService.getUserById(3);
+          System.out.println(user3); // Output: User{id=3, name='Static User'}
+      }
+  }
+
+
+Dynamic Fake
+Definition: A dynamic fake can change its behavior based on the inputs or during the test execution. It allows more flexibility and can simulate different scenarios.
+Example: Using the same user service example, a dynamic fake might return different user data based on the input ID or other conditions.
+Example Code:
+
+DynamicUserServiceFake Class :->
+class DynamicUserServiceFake implements UserService {
+    private Map<Integer, User> userDatabase = new HashMap<>();
+    public void addUser(int id, User user) {
+        userDatabase.put(id, user);
+    }
+    @Override
+    public User getUserById(int id) {
+        return userDatabase.getOrDefault(id, new User(id, "Dynamic User"));
+    }
+}
+Usage: This fake can be configured to return different users based on the ID, allowing more complex test scenarios.
+
+Example Usage :->
+public class Main {
+    public static void main(String[] args) {
+        DynamicUserServiceFake userService = new DynamicUserServiceFake();
+        
+        // Adding users to the fake database
+        userService.addUser(1, new User(1, "Alice"));
+        userService.addUser(2, new User(2, "Bob"));
+        
+        // Retrieving users
+        User user1 = userService.getUserById(1);
+        System.out.println(user1); // Output: User{id=1, name='Alice'}
+        
+        User user2 = userService.getUserById(2);
+        System.out.println(user2); // Output: User{id=2, name='Bob'}
+        
+        User user3 = userService.getUserById(3);
+        System.out.println(user3); // Output: User{id=3, name='Default User'}
+    }
+}
+
+Key Differences
+Behavior:
+Static Fake: Returns fixed data, regardless of the input.
+Dynamic Fake: Can return different data based on the input or internal state.
+
+Flexibility:
+Static Fake: Less flexible, suitable for simple tests.
+Dynamic Fake: More flexible, suitable for complex tests.
