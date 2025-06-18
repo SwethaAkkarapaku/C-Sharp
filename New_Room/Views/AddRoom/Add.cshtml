@@ -1,0 +1,25 @@
+﻿@using RoomManagementMVCApp.DTO;
+@model MeetingRoomDTO
+
+@using(var frm=Html.BeginForm(FormMethod.Post))
+{
+    <table style="width:70%">
+        <tr>
+            <td>Title</td>
+            <td>@Html.TextBoxFor(m=>m.RoomName)</td>
+        </tr>
+        <tr>
+            <td>Capacity</td>
+            <td>@Html.TextBoxFor(m => m.Capacity,new {type="number"})</td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td>@Html.TextBoxFor(m => m.Location)</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Add"/>
+            </td>
+        </tr>
+    </table>
+}
