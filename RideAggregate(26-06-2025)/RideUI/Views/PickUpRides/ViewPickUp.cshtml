@@ -1,0 +1,26 @@
+﻿@using RideUI.DTO
+@model GetPickUp
+<h1>View Pick Up Ride</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>PickUpId</td>
+            <td>SourceLoc</td>
+            <td>DestinationLoc</td>
+            <td>CustId</td>
+            <td>DriverId</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (PickUpRideDTO pick in Model.result)
+    {
+        <tr>
+            <td>@pick.pickId</td>
+            <td>@pick.sourceLoc</td>
+            <td>@pick.destinationLoc</td>
+            <td>@pick.custId</td>
+            <td>@pick.driverId</td>
+        </tr>
+    }
+    </tbody>
+</table>

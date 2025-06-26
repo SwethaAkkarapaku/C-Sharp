@@ -1,0 +1,24 @@
+﻿@using RideUI.DTO
+@model AddPickUpDrop
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Source Location:</td>
+            <td>@Html.DropDownListFor(m => m.sourceLoc, Model.srcList)</td>
+        </tr>
+        <tr>
+            <td>Destination Location:</td>
+            <td>@Html.DropDownListFor(m => m.destinationLoc, Model.destList)</td>
+        </tr>
+        <tr>
+            <td>Driver Name:</td>
+            <td>@Html.DropDownListFor(m => m.driverId, Model.drvList)</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="BookRide" />
+            </td>
+        </tr>
+    </table>
+}
